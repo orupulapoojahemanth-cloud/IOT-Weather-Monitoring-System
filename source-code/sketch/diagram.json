@@ -1,0 +1,31 @@
+{
+  "version": 1,
+  "author": "puja hemanth orupula",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "board-esp32-devkit-c-v4", "id": "esp", "top": -38.4, "left": -14.36, "attrs": {} },
+    { "type": "wokwi-dht22", "id": "dht1", "top": 29.1, "left": -226.2, "attrs": {} },
+    { "type": "board-bmp180", "id": "bmp1", "top": 82.24, "left": 182.66, "attrs": {} },
+    {
+      "type": "wokwi-lcd1602",
+      "id": "lcd1",
+      "top": -137.6,
+      "left": 168.8,
+      "attrs": { "pins": "i2c" }
+    }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "dht1:VCC", "esp:5V", "red", [ "v86.4", "h172.8" ] ],
+    [ "dht1:SDA", "esp:15", "green", [ "v0" ] ],
+    [ "dht1:GND", "esp:GND.2", "black", [ "v0", "h115.2", "v-201.6" ] ],
+    [ "bmp1:GND", "esp:GND.2", "black", [ "h48", "v-76.61", "h-192", "v-28.8" ] ],
+    [ "bmp1:SDA", "esp:21", "green", [ "h19.2", "v-47.81" ] ],
+    [ "esp:22", "bmp1:SCL", "green", [ "h201.6", "v96" ] ],
+    [ "bmp1:VCC", "esp:5V", "red", [ "h0", "v-28.8", "h-115.2", "v163.2", "h-163.2", "v-48" ] ],
+    [ "lcd1:SDA", "esp:21", "green", [ "h-57.6", "v134.6", "h0" ] ],
+    [ "lcd1:SCL", "esp:22", "green", [ "h-76.8", "v77.1" ] ]
+  ],
+  "dependencies": {}
+}
